@@ -1,10 +1,10 @@
 class StockManager < Formula
   desc "Stock portfolio management and automated trading system"
   homepage "https://github.com/shartith/StockManager"
-  url "https://github.com/shartith/StockManager/releases/download/v1.0.0/stock-manager-1.0.0.tar.gz"
-  sha256 "596ca616d2a8ed1766b0a4a8670b878f7f31d7e8f8e863992b711c810aff18c0"
+  url "https://github.com/shartith/StockManager/releases/download/v1.1.0/stock-manager-1.1.0.tar.gz"
+  sha256 "282457192e324506c0b823925ba6301678f83dd5958b50626a33dc6a39dedd43"
   license "MIT"
-  version "1.0.0"
+  version "1.1.0"
 
   depends_on "node"
 
