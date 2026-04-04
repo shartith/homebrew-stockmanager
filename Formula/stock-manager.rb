@@ -1,25 +1,18 @@
 class StockManager < Formula
   desc "Stock portfolio management and automated trading system"
   homepage "https://github.com/shartith/StockManager"
-  url "https://github.com/shartith/StockManager/releases/download/v4.0.0/stock-manager-4.0.0.tar.gz"
-  sha256 "24dd5527cd829c11ec67081938d435a3a666ee1022af1dae732f252eec40245d"
+  url "https://github.com/shartith/StockManager/releases/download/v4.0.1/stock-manager-4.0.1.tar.gz"
+  sha256 "4815283beed4572ad84b0bb4bac4673dfe46fb3aef44571f42d475351e47b0dd"
   license "MIT"
-  version "4.0.0"
+  version "4.0.1"
 
   depends_on "node"
 
   def install
-    # Install npm dependencies and build
     system "npm", "install", "--production=false"
     system "npm", "run", "build"
-
-    # Remove devDependencies after build
     system "npm", "prune", "--production"
-
-    # Install to libexec (keeps node_modules isolated)
     libexec.install Dir["*"]
-
-    # Create wrapper script
     (bin/"stock-manager").write <<~EOS
       #!/bin/bash
       export STOCK_MANAGER_DATA="${HOME}/.stock-manager"
@@ -29,13 +22,12 @@ class StockManager < Formula
   end
 
   def post_install
-    # Create data directory
     (var/"stock-manager").mkpath
   end
 
   def caveats
     <<~EOS
-      Stock Manager v4.0.0 has been installed!
+      Stock Manager v4.0.1 has been installed!
 
       Start the server:
         stock-manager
@@ -43,12 +35,6 @@ class StockManager < Formula
       Then open http://localhost:3000 in your browser.
 
       Data is stored in: ~/.stock-manager/
-
-      What's new in v4.0.0:
-        - Security hardening (helmet, rate-limit, WS auth)
-        - 14 trading rules engine (configurable in Settings)
-        - Responsive mobile layout
-        - 93% test coverage
 
       Optional: Install Ollama for AI-powered trading decisions:
         brew install ollama
