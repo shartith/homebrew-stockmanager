@@ -1,13 +1,11 @@
 class StockManager < Formula
   desc "Stock portfolio management and automated trading system"
   homepage "https://github.com/shartith/StockManager"
-  url "https://github.com/shartith/StockManager/releases/download/v4.2.0/stock-manager-4.2.0.tar.gz"
-  sha256 "af507419604458787b2b8201bb9b1a484b86c3fe26eff2b39250c91a9262a309"
+  url "https://github.com/shartith/StockManager/releases/download/v4.3.0/stock-manager-4.3.0.tar.gz"
+  sha256 "b0933a478b292e22b99abc6134d6470183aab220902fed57675506875898aec8"
   license "MIT"
-  version "4.2.0"
-
+  version "4.3.0"
   depends_on "node"
-
   def install
     system "npm", "install", "--production=false"
     system "npm", "run", "build"
@@ -20,23 +18,16 @@ class StockManager < Formula
       exec "#{Formula["node"].bin}/node" "#{libexec}/bin/stock-manager" "$@"
     EOS
   end
-
   def post_install
     (var/"stock-manager").mkpath
   end
-
   def caveats
     <<~EOS
-      Stock Manager v4.2.0 has been installed!
-
-      Start the server:
-        stock-manager
-
-      NAS sync: stock-manager sync
-      Data is stored in: ~/.stock-manager/
+      Stock Manager v4.3.0 — 상승률 기반 종목 탐색 추가
+      stock-manager
+      http://localhost:3000
     EOS
   end
-
   test do
     assert_match "stock-manager", shell_output("#{bin}/stock-manager --help 2>&1", 1)
   end
