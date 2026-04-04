@@ -1,10 +1,10 @@
 class StockManager < Formula
   desc "Stock portfolio management and automated trading system"
   homepage "https://github.com/shartith/StockManager"
-  url "https://github.com/shartith/StockManager/releases/download/v3.1.1/stock-manager-3.1.1.tar.gz"
-  sha256 "8668364b2b25120de00da06ebb00adc52a117fba8a7f2a32e2330a1566bb88a8"
+  url "https://github.com/shartith/StockManager/releases/download/v4.0.0/stock-manager-4.0.0.tar.gz"
+  sha256 "24dd5527cd829c11ec67081938d435a3a666ee1022af1dae732f252eec40245d"
   license "MIT"
-  version "3.1.1"
+  version "4.0.0"
 
   depends_on "node"
 
@@ -35,7 +35,7 @@ class StockManager < Formula
 
   def caveats
     <<~EOS
-      Stock Manager has been installed!
+      Stock Manager v4.0.0 has been installed!
 
       Start the server:
         stock-manager
@@ -43,6 +43,12 @@ class StockManager < Formula
       Then open http://localhost:3000 in your browser.
 
       Data is stored in: ~/.stock-manager/
+
+      What's new in v4.0.0:
+        - Security hardening (helmet, rate-limit, WS auth)
+        - 14 trading rules engine (configurable in Settings)
+        - Responsive mobile layout
+        - 93% test coverage
 
       Optional: Install Ollama for AI-powered trading decisions:
         brew install ollama
