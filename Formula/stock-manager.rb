@@ -1,10 +1,10 @@
 class StockManager < Formula
   desc "Stock portfolio management and automated trading system"
   homepage "https://github.com/shartith/StockManager"
-  url "https://github.com/shartith/StockManager/releases/download/v4.0.3/stock-manager-4.0.3.tar.gz"
-  sha256 "7d15c205e2b9c4a404368a12fe1c263a25b10205b5eefa13ede0f90cd2f6f43e"
+  url "https://github.com/shartith/StockManager/releases/download/v4.1.0/stock-manager-4.1.0.tar.gz"
+  sha256 "db2be30c3bcae3ecf66564adcb96094243bd57c651d73e526494bbb265b50a1d"
   license "MIT"
-  version "4.0.3"
+  version "4.1.0"
 
   depends_on "node"
 
@@ -27,14 +27,13 @@ class StockManager < Formula
 
   def caveats
     <<~EOS
-      Stock Manager v4.0.3 has been installed!
+      Stock Manager v4.1.0 has been installed!
 
       Start the server:
         stock-manager
 
       Ollama will be automatically installed and started if needed.
       Then open http://localhost:3000 in your browser.
-
       Data is stored in: ~/.stock-manager/
     EOS
   end
