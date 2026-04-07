@@ -1,10 +1,10 @@
 class StockManager < Formula
   desc "Stock portfolio management and automated trading system"
   homepage "https://github.com/shartith/StockManager"
-  url "https://github.com/shartith/StockManager/releases/download/v4.5.0/stock-manager-4.5.0.tar.gz"
-  sha256 "9860b60c415df1e5186d3229389d649a3e745acaefa0a2e17cf5dc63c3021aeb"
+  url "https://github.com/shartith/StockManager/releases/download/v4.5.1/stock-manager-4.5.1.tar.gz"
+  sha256 "c485a2300c9d3cdf979fe701551cd630eb3e06b12dc12902f31ffcc15c4078bf"
   license "MIT"
-  version "4.5.0"
+  version "4.5.1"
   depends_on "node"
   def install
     system "npm", "install", "--production=false"
@@ -23,7 +23,7 @@ class StockManager < Formula
   end
   def caveats
     <<~EOS
-      Stock Manager v4.5.0
+      Stock Manager v4.5.1
       stock-manager
       http://localhost:3000
     EOS
