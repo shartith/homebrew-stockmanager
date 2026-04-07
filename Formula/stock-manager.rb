@@ -1,10 +1,10 @@
 class StockManager < Formula
   desc "Stock portfolio management and automated trading system"
   homepage "https://github.com/shartith/StockManager"
-  url "https://github.com/shartith/StockManager/releases/download/v4.7.0/stock-manager-4.7.0.tar.gz"
-  sha256 "8683d945c3c1f9a51017af6c4ae426f33ebb4dd6ef9b3cf20dbd4875f6ed4991"
+  url "https://github.com/shartith/StockManager/releases/download/v4.7.1/stock-manager-4.7.1.tar.gz"
+  sha256 "9ff6a32cec65b14a33ffffe4d332d277b557c2a8049f3b6891eda8c73994ecd4"
   license "MIT"
-  version "4.7.0"
+  version "4.7.1"
   depends_on "node"
   # better-sqlite3 native build fallback (prebuilt binaries are usually used,
   # but if a prebuild is unavailable for the current Node ABI, node-gyp needs
@@ -27,7 +27,7 @@ class StockManager < Formula
   end
   def caveats
     <<~EOS
-      Stock Manager v4.7.0
+      Stock Manager v4.7.1
       stock-manager
       http://localhost:3000
     EOS
