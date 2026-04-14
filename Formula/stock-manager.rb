@@ -1,15 +1,15 @@
 class StockManager < Formula
   desc "Stock portfolio management and automated trading system"
   homepage "https://github.com/shartith/StockManager"
-  url "https://github.com/shartith/StockManager/releases/download/v4.12.1/stock-manager-4.12.1.tar.gz"
-  sha256 "07889556903ba1e2cdba932f1c088ecd38df8b571079d31d61ca070703d1659d"
+  url "https://github.com/shartith/StockManager/releases/download/v4.12.2/stock-manager-4.12.2.tar.gz"
+  sha256 "abca244a0eda2a69867dfa8721ddf9539865c3ffc6acc64e51858112916f49c2"
   license "MIT"
-  version "4.12.1"
+  version "4.12.2"
 
   # MLX backend requires Apple Silicon.
   depends_on :macos
   on_intel do
-    odie "Stock Manager v4.12.1+ requires Apple Silicon (MLX backend)."
+    odie "Stock Manager v4.12.2+ requires Apple Silicon (MLX backend)."
   end
 
   depends_on "node"
@@ -47,7 +47,7 @@ class StockManager < Formula
 
   def caveats
     <<~EOS
-      Stock Manager v4.12.1 — Apple MLX 기반 로컬 LLM
+      Stock Manager v4.12.2 — Apple MLX 기반 로컬 LLM
 
       최초 실행 시 MLX 기본 모델(mlx-community/gemma-3n-E4B-it-4bit, ~4.4GB)이
       HuggingFace에서 자동 다운로드됩니다. 네트워크에 따라 2~5분 소요될 수 있습니다.
@@ -57,7 +57,7 @@ class StockManager < Formula
 
       시작:  stock-manager
       접속:  http://localhost:3000
-      문서:  https://github.com/shartith/StockManager/blob/v4.12.1/docs/MLX_MIGRATION.md
+      문서:  https://github.com/shartith/StockManager/blob/v4.12.2/docs/MLX_MIGRATION.md
     EOS
   end
 
