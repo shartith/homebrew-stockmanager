@@ -1,20 +1,13 @@
 class StockManager < Formula
   desc "Stock portfolio management and automated trading system"
   homepage "https://github.com/shartith/StockManager"
-  url "https://github.com/shartith/StockManager/releases/download/v4.12.2/stock-manager-4.12.2.tar.gz"
-  sha256 "abca244a0eda2a69867dfa8721ddf9539865c3ffc6acc64e51858112916f49c2"
+  url "https://github.com/shartith/StockManager/releases/download/v4.13.0/stock-manager-4.13.0.tar.gz"
+  sha256 "342d4d7922fbc02715154b6322f53283b3da8ec68aacadbb110b65bfa6de5472"
   license "MIT"
-  version "4.12.2"
-
-  # MLX backend requires Apple Silicon.
-  depends_on :macos
-  on_intel do
-    odie "Stock Manager v4.12.2+ requires Apple Silicon (MLX backend)."
-  end
+  version "4.13.0"
 
   depends_on "node"
-  # Python is required at runtime for the MLX (mlx-lm) server venv,
-  # and at build time as a fallback for better-sqlite3 native compilation.
+  # Python is still used at build time as a fallback for better-sqlite3 native compilation.
   depends_on "python@3.12"
 
   def install
@@ -23,19 +16,9 @@ class StockManager < Formula
     system "npm", "prune", "--production"
     libexec.install Dir["*"]
 
-    # Provision an isolated Python venv with mlx-lm inside libexec so brew
-    # upgrades regenerate it cleanly. HuggingFace model cache lives under
-    # $HOME/.cache/huggingface and persists across upgrades.
-    ohai "Installing mlx-lm into libexec venv (may take a moment)..."
-    python = Formula["python@3.12"].opt_bin/"python3.12"
-    system python, "-m", "venv", "#{libexec}/venv"
-    system "#{libexec}/venv/bin/pip", "install", "--quiet", "--upgrade", "pip"
-    system "#{libexec}/venv/bin/pip", "install", "--quiet", "mlx-lm"
-
     (bin/"stock-manager").write <<~EOS
       #!/bin/bash
       export STOCK_MANAGER_DATA="${HOME}/.stock-manager"
-      export STOCK_MANAGER_VENV="#{libexec}/venv"
       mkdir -p "$STOCK_MANAGER_DATA"
       exec "#{Formula["node"].bin}/node" "#{libexec}/bin/stock-manager" "$@"
     EOS
@@ -47,17 +30,19 @@ class StockManager < Formula
 
   def caveats
     <<~EOS
-      Stock Manager v4.12.2 — Apple MLX 기반 로컬 LLM
+      Stock Manager v4.13.0 — 외부 LLM(Ollama/OpenAI 원격) 전환
 
-      최초 실행 시 MLX 기본 모델(mlx-community/gemma-3n-E4B-it-4bit, ~4.4GB)이
-      HuggingFace에서 자동 다운로드됩니다. 네트워크에 따라 2~5분 소요될 수 있습니다.
+      LLM은 원격 서버(Ollama 또는 OpenAI 호환)에 연결해 사용합니다.
+      웹 설정 페이지에서 제공자 선택 + URL / 모델 / (옵션)API 키를 입력하세요.
 
-      기존 Ollama 사용자: `stock-manager --uninstall-ollama` 실행 시
-      바이너리와 ~/.ollama (모델 포함) 전부 제거됩니다.
+      기본값: OpenAI 호환 — https://ai.unids.kr/v1
+      Ollama: http://<host>:11434/v1
+
+      v4.12.x MLX venv 정리 (선택):
+        stock-manager --uninstall-mlx
 
       시작:  stock-manager
       접속:  http://localhost:3000
-      문서:  https://github.com/shartith/StockManager/blob/v4.12.2/docs/MLX_MIGRATION.md
     EOS
   end
 
