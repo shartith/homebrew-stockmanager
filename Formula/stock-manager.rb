@@ -2,7 +2,7 @@ class StockManager < Formula
   desc "Stock portfolio management and automated trading system"
   homepage "https://github.com/shartith/StockManager"
   url "https://github.com/shartith/StockManager/releases/download/v4.14.0/stock-manager-4.14.0.tar.gz"
-  sha256 "PLACEHOLDER_SHA256"
+  sha256 "9c835a963768b72bddba2b7258ed49cc54adc5088bad3c9340a4ea676b2a38ee"
   license "MIT"
   version "4.14.0"
 
