@@ -1,10 +1,10 @@
 class StockManager < Formula
   desc "Stock portfolio management and automated trading system"
   homepage "https://github.com/shartith/StockManager"
-  url "https://github.com/shartith/StockManager/releases/download/v4.13.2/stock-manager-4.13.2.tar.gz"
-  sha256 "ad462d3a85b8bb22e0657cdd3b6acd18137e41f0b4c6fc700bc4695809df9b6e"
+  url "https://github.com/shartith/StockManager/releases/download/v4.14.0/stock-manager-4.14.0.tar.gz"
+  sha256 "PLACEHOLDER_SHA256"
   license "MIT"
-  version "4.13.2"
+  version "4.14.0"
 
   depends_on "node"
   # Python is still used at build time as a fallback for better-sqlite3 native compilation.
@@ -30,16 +30,11 @@ class StockManager < Formula
 
   def caveats
     <<~EOS
-      Stock Manager v4.13.2 — 외부 LLM(Ollama/OpenAI 원격) 전환
+      Stock Manager v4.14.0 — 시장별 TOP 50 경쟁 구도
 
-      LLM은 원격 서버(Ollama 또는 OpenAI 호환)에 연결해 사용합니다.
-      웹 설정 페이지에서 제공자 선택 + URL / 모델 / (옵션)API 키를 입력하세요.
-
-      기본값: OpenAI 호환 — https://ai.unids.kr/v1
-      Ollama: http://<host>:11434/v1
-
-      v4.12.x MLX venv 정리 (선택):
-        stock-manager --uninstall-mlx
+      추천종목이 시장별 최대 50개까지 경쟁하며,
+      SELL/HOLD 시그널 시 적극 감점 → 하위 종목 자동 퇴출.
+      상위 10위 + 80점 이상일 때만 관심종목 승격.
 
       시작:  stock-manager
       접속:  http://localhost:3000
