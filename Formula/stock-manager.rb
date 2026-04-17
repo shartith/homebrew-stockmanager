@@ -1,10 +1,10 @@
 class StockManager < Formula
   desc "Stock portfolio management and automated trading system"
   homepage "https://github.com/shartith/StockManager"
-  url "https://github.com/shartith/StockManager/releases/download/v4.17.1/stock-manager-4.17.1.tar.gz"
-  sha256 "0340cb006c5dcce8ac0b161273ca29dd65aec22a7cdc19b2447e89b0557f66fe"
+  url "https://github.com/shartith/StockManager/releases/download/v4.18.0/stock-manager-4.18.0.tar.gz"
+  sha256 "66cdf1ca95f80fa62b59cbb22a9a0b889c8dd42f0e0024e70ef3c8f7ff5be9bd"
   license "MIT"
-  version "4.17.1"
+  version "4.18.0"
 
   depends_on "node"
   # Python is still used at build time as a fallback for better-sqlite3 native compilation.
@@ -30,11 +30,12 @@ class StockManager < Formula
 
   def caveats
     <<~EOS
-      Stock Manager v4.17.1 — USE_CASES gap 보강 (테스트 +51) + cleanup 버그 fix
+      Stock Manager v4.18.0 — USE_CASES 구조 보완 3건
 
-      v4.17.0 백테스트 파이프라인 유지.
-      UC-07/11/12 테스트 gap 보강 (631 tests pass).
-      watchlistCleanup: 추천 없는 종목이 3일 후 삭제되던 버그 수정.
+      auto_trades.failure_reason 구조화 (enum 10종).
+      LLM provider 자동 스위치: primary → fallback → 기술적 fallback.
+      llmFallbackUrl/Model/ApiKey 설정 시 외부 LLM 장애 대비 가능.
+      weekendLearning smoke 테스트. 663 tests pass.
 
       시작:  stock-manager
       접속:  http://localhost:3000
