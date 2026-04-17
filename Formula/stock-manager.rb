@@ -1,10 +1,10 @@
 class StockManager < Formula
   desc "Stock portfolio management and automated trading system"
   homepage "https://github.com/shartith/StockManager"
-  url "https://github.com/shartith/StockManager/releases/download/v4.17.0/stock-manager-4.17.0.tar.gz"
-  sha256 "2863e7337cdf7fbedc63a46ba17eca7c4142ef814bd2a5b59313c5e8fb37b6e0"
+  url "https://github.com/shartith/StockManager/releases/download/v4.17.1/stock-manager-4.17.1.tar.gz"
+  sha256 "0340cb006c5dcce8ac0b161273ca29dd65aec22a7cdc19b2447e89b0557f66fe"
   license "MIT"
-  version "4.17.0"
+  version "4.17.1"
 
   depends_on "node"
   # Python is still used at build time as a fallback for better-sqlite3 native compilation.
@@ -30,12 +30,11 @@ class StockManager < Formula
 
   def caveats
     <<~EOS
-      Stock Manager v4.17.0 — 백테스트 파이프라인 통합 (종목 필터)
+      Stock Manager v4.17.1 — USE_CASES gap 보강 (테스트 +51) + cleanup 버그 fix
 
-      주말 자동 백테스트(관심/추천 최대 30종목) → DB 저장.
-      Protection BacktestReject: PF<0.8 종목 매수 차단.
-      스코어링에 PF 가점/감점 반영 (PF>=1.5 +15, PF<1.0 -20).
-      실시간 결정 근거가 아닌 구조적 필터로 활용.
+      v4.17.0 백테스트 파이프라인 유지.
+      UC-07/11/12 테스트 gap 보강 (631 tests pass).
+      watchlistCleanup: 추천 없는 종목이 3일 후 삭제되던 버그 수정.
 
       시작:  stock-manager
       접속:  http://localhost:3000
