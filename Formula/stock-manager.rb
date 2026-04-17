@@ -1,10 +1,10 @@
 class StockManager < Formula
   desc "Stock portfolio management and automated trading system"
   homepage "https://github.com/shartith/StockManager"
-  url "https://github.com/shartith/StockManager/releases/download/v4.18.0/stock-manager-4.18.0.tar.gz"
-  sha256 "66cdf1ca95f80fa62b59cbb22a9a0b889c8dd42f0e0024e70ef3c8f7ff5be9bd"
+  url "https://github.com/shartith/StockManager/releases/download/v4.19.0/stock-manager-4.19.0.tar.gz"
+  sha256 "df3a67d79640c15ffacfb8b0ee8d78f95a672adb53070fe5e25c844ba92ec123"
   license "MIT"
-  version "4.18.0"
+  version "4.19.0"
 
   depends_on "node"
   # Python is still used at build time as a fallback for better-sqlite3 native compilation.
@@ -30,12 +30,13 @@ class StockManager < Formula
 
   def caveats
     <<~EOS
-      Stock Manager v4.18.0 — USE_CASES 구조 보완 3건
+      Stock Manager v4.19.0 — 양방향 NAS sync MVP + 텔레메트리
 
-      auto_trades.failure_reason 구조화 (enum 10종).
-      LLM provider 자동 스위치: primary → fallback → 기술적 fallback.
-      llmFallbackUrl/Model/ApiKey 설정 시 외부 LLM 장애 대비 가능.
-      weekendLearning smoke 테스트. 663 tests pass.
+      다른 디바이스가 올린 jsonl을 내 DB로 자동 import (append-only 8종).
+      opt-in: nasImportEnabled=true로 활성화.
+      weightOptimizer 조기 종료 사유 system_events 기록.
+      백테스트 유의성 임계값 backtestMinTradesForSave로 조정 가능.
+      676 tests pass.
 
       시작:  stock-manager
       접속:  http://localhost:3000
