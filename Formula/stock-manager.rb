@@ -1,10 +1,10 @@
 class StockManager < Formula
   desc "Stock portfolio management and automated trading system"
   homepage "https://github.com/shartith/StockManager"
-  url "https://github.com/shartith/StockManager/releases/download/v4.16.0/stock-manager-4.16.0.tar.gz"
-  sha256 "681bccf1662c3e3519c71d835e333703160511feea8d30ef590dd23307dcfa00"
+  url "https://github.com/shartith/StockManager/releases/download/v4.17.0/stock-manager-4.17.0.tar.gz"
+  sha256 "2863e7337cdf7fbedc63a46ba17eca7c4142ef814bd2a5b59313c5e8fb37b6e0"
   license "MIT"
-  version "4.16.0"
+  version "4.17.0"
 
   depends_on "node"
   # Python is still used at build time as a fallback for better-sqlite3 native compilation.
@@ -30,13 +30,12 @@ class StockManager < Formula
 
   def caveats
     <<~EOS
-      Stock Manager v4.16.0 — Protection 시스템 + ROI Table (freqtrade 영감)
+      Stock Manager v4.17.0 — 백테스트 파이프라인 통합 (종목 필터)
 
-      전략 수준 circuit breaker 3종:
-      - StoplossGuard (6h 내 손절 3건 → 전체 매수 차단)
-      - CooldownPeriod (종목 거래 후 30분 재진입 금지)
-      - LowProfitPairs (최근 5거래 평균 <-5% → 해당 종목 매수 차단)
-      ROI Table: 시간 경과별 목표 수익률 감쇠로 time-tiered exit.
+      주말 자동 백테스트(관심/추천 최대 30종목) → DB 저장.
+      Protection BacktestReject: PF<0.8 종목 매수 차단.
+      스코어링에 PF 가점/감점 반영 (PF>=1.5 +15, PF<1.0 -20).
+      실시간 결정 근거가 아닌 구조적 필터로 활용.
 
       시작:  stock-manager
       접속:  http://localhost:3000
