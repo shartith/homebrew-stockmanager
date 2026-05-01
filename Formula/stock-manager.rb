@@ -1,10 +1,10 @@
 class StockManager < Formula
   desc "Stock portfolio management and automated trading system"
   homepage "https://github.com/shartith/StockManager"
-  url "https://github.com/shartith/StockManager/releases/download/v4.19.1/stock-manager-4.19.1.tar.gz"
-  sha256 "6d5c28d931da716565893a0aee90d3b86771e3450ddb55bf6163824365785ad7"
+  url "https://github.com/shartith/StockManager/releases/download/v4.19.2/stock-manager-4.19.2.tar.gz"
+  sha256 "684af7613fd4d2b3b004cb3d93c278ea064682b87243d09395c88e8de99664d6"
   license "MIT"
-  version "4.19.1"
+  version "4.19.2"
 
   depends_on "node"
   # Python is still used at build time as a fallback for better-sqlite3 native compilation.
@@ -30,10 +30,11 @@ class StockManager < Formula
 
   def caveats
     <<~EOS
-      Stock Manager v4.19.1 — 테스트 커버리지 3개 파일 85%+
+      Stock Manager v4.19.2 — 추천 갱신 watchlist 가드 누락 fix
 
-      weightOptimizer 9→98.5%, backtester 59→98%, tradingRules 74→99%.
-      747 tests pass (+71). v4.19.0 양방향 NAS sync 유지.
+      13일간 추천종목 INSERT 0건 회귀 해결. watchlistTickers SELECT 에
+      `deleted_at IS NULL` 가드 추가, /:id/watch 부활 전략 적용.
+      757 tests pass (+5). v4.19.0 양방향 NAS sync 유지.
 
       시작:  stock-manager
       접속:  http://localhost:3000
